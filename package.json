@@ -1,0 +1,7 @@
+{
+    "name": "pvcf",
+    "description": "PVCF - Pattern-View Client Framework",
+    "author": "Konrad Kowalski <rootsher@gmail.com>",
+    "version": "0.1.0",
+    "main": "./lib/pvcf"
+}
