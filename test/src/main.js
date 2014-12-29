@@ -71,7 +71,7 @@ requirejs(['pvcf'], function run(pvcf) {
         var params = {};
 
         if (hash) {
-            patternData = patternManager.recognizeHash(hash);
+            patternData = patternManager.resolveHash(hash);
 
             if (patternData) {
                 view = patternData.view;
