@@ -16,6 +16,7 @@ requirejs(['pvcf'], function run(pvcf) {
 
     var PatternManager = pvcf.PatternManager;
     var TabManager = pvcf.TabManager;
+    var Navigation = pvcf.Navigation;
 
 
 
@@ -62,7 +63,6 @@ requirejs(['pvcf'], function run(pvcf) {
     // Set start view.
     var startView = index;
 
-
     // This function is run when application started and when hash is change.
     function main() {
         var hash = window.location.hash.slice(1);
@@ -88,7 +88,6 @@ requirejs(['pvcf'], function run(pvcf) {
         }
 
         startTab.openView(view, params);
-        tabManager.getContainerElement().appendChild(startTab.getContainerElement());
     }
 
 
@@ -97,6 +96,8 @@ requirejs(['pvcf'], function run(pvcf) {
     var startTab = tabManager.openTab();
 
     main();
+
+
 
 
     // Tab list container element is create dynamically. Here we can create style for it and appends to document.
