@@ -63,9 +63,10 @@ requirejs(['pvcf'], function run(pvcf) {
     // Set start view.
     var startView = index;
 
-    // This function is run when application started and when hash is change.
-    function main() {
-        var hash = window.location.hash.slice(1);
+    tabManager.openTab();
+
+    function handleNavigationEvent(path, options) {
+        var hash = path.slice(1);
         var patternData, view;
 
         var params = {};
@@ -87,25 +88,17 @@ requirejs(['pvcf'], function run(pvcf) {
             params = patternData.params;
         }
 
-        startTab.openView(view, params);
+        tabManager.getCurrentTab().openView(view, params);
     }
 
+    var navigation = new Navigation();
 
-    // Actions running when document is ready, and DOM content loaded:
+    navigation.addNavigationEventHandler(handleNavigationEvent);
 
-    var startTab = tabManager.openTab();
-
-    main();
-
-
+    navigation.start();
 
 
     // Tab list container element is create dynamically. Here we can create style for it and appends to document.
     // Currently, only appends to mainContent element.
     document.querySelector('.mainContent').appendChild(tabManager.getContainerElement());
-
-
-    // Actions running when hash is change:
-
-    window.addEventListener('hashchange', main);
 });
