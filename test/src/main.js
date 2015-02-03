@@ -63,15 +63,16 @@ requirejs(['pvcf'], function run(pvcf) {
     // Set start view.
     var startView = index;
 
-    // Open start tab.
-    var startTab = tabManager.openTab();
+    tabManager.openTab();
 
-    // Init module for navigate in application.
-    var navigation = new Navigation(patternManager, startView, startTab);
 
-    navigation.init();
-    navigation.listenHashChange();
-    navigation.listenClickAction();
+    // # Navigation #
+
+    var navigation = new Navigation();
+
+    navigation.addNavigationEventHandler(Navigation.handleNavigationEvent.bind(undefined, patternManager, tabManager, _notFound));
+
+    navigation.start();
 
 
     // Tab list container element is create dynamically. Here we can create style for it and appends to document.
