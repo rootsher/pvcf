@@ -70,7 +70,7 @@ requirejs(['pvcf'], function run(pvcf) {
 
     var navigation = new Navigation();
 
-    navigation.addNavigationEventHandler(Navigation.handleNavigationEvent.bind(undefined, patternManager, tabManager, _notFound));
+    navigation.addNavigationEventHandler(Navigation.handleNavigationEvent.bind(undefined, patternManager, tabManager, _notFound, startView));
 
     navigation.start();
 
