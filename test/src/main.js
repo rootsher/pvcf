@@ -65,35 +65,12 @@ requirejs(['pvcf'], function run(pvcf) {
 
     tabManager.openTab();
 
-    function handleNavigationEvent(path, options) {
-        var hash = path.slice(1);
-        var patternData, view;
 
-        var params = {};
-
-        if (hash) {
-            patternData = patternManager.resolveHash(hash);
-
-            if (patternData) {
-                view = patternData.view;
-            } else {
-                // Run not found page error.
-                view = _notFound;
-            }
-        } else {
-            view = startView;
-        }
-
-        if (patternData) {
-            params = patternData.params;
-        }
-
-        tabManager.getCurrentTab().openView(view, params);
-    }
+    // # Navigation #
 
     var navigation = new Navigation();
 
-    navigation.addNavigationEventHandler(handleNavigationEvent);
+    navigation.addNavigationEventHandler(Navigation.handleNavigationEvent.bind(undefined, patternManager, tabManager, _notFound));
 
     navigation.start();
 
