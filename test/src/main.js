@@ -54,25 +54,28 @@ requirejs(['pvcf'], function run(pvcf) {
 
 
 
-    // # Tab manager #
+    // ### Tab manager ###
 
     // Tab manager is main managing in system. Is used for manage tabs.
 
     var tabManager = new TabManager();
 
-    // Set start view.
-    var startView = index;
+    // Set start and error views.
+    tabManager.setStartView(index);
+    tabManager.setErrorView(_notFound);
 
     tabManager.openTab();
 
 
-    // # Navigation #
+
+    // ### Navigation ###
 
     var navigation = new Navigation();
 
-    navigation.addNavigationEventHandler(Navigation.handleNavigationEvent.bind(undefined, patternManager, tabManager, _notFound, startView));
+    navigation.addNavigationEventHandler(Navigation.handleNavigationEvent.bind(undefined, patternManager, tabManager));
 
     navigation.start();
+
 
 
     // Tab list container element is create dynamically. Here we can create style for it and appends to document.
